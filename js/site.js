@@ -45,54 +45,63 @@ async function displayMovies() {
     
 }
 
-// function showMovieDetails(btn) {
-
-//     let movieId = btn.getAttribute('data-movieId');
-
-//     let modalParagraph = document.getElementById('movie-modal-paragraph');
-//     modalParagraph.textContent = movieId;
-
-// }
-
-async function getMovie() {
-    try {
-
-        let response = await fetch('https://api.themoviedb.org/3/movie/{movie_id}', {
-            headers: {
-                'Authorization': `Bearer ${API_KEY}`
-            }
-        });
-
-        let data = await response.json();
-        return data;
-
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-async function showMovieDetails(btn) {
+function showMovieDetails(btn) {
 
     let movieId = btn.getAttribute('data-movieId');
-    
+
     let modalParagraph = document.getElementById('movie-modal-paragraph');
     modalParagraph.textContent = movieId;
 
-    const movieModal = document.getElementById('movie-modal');
+}
 
-    let data = await getMovie();
+// async function getMovie() {
+//     try {
 
-    let movDetails = data.results; // movDetails is an array of objects
+//         let response = await fetch('https://api.themoviedb.org/3/movie/{movie_id}', {
+//             headers: {
+//                 'Authorization': `Bearer ${API_KEY}`
+//             }
+//         });
 
-    movDetails.forEach(detail => {
+//         let data = await response.json();
+//         return data;
 
+//     } catch (error) {
+//         console.error(error);
+//     }
+// }
+
+// async function showMovieDetails(btn) {
+
+//     let movieId = btn.getAttribute('data-movieId');
+    
+//     let modalParagraph = document.getElementById('movie-modal-paragraph');
+//     modalParagraph.textContent = movieId;
+
+//     const movieModal = document.getElementById('movie-modal');
+
+//     let data = await getMovie();
+
+//     let movDetails = data.results; // movDetails is an array of objects
+
+//     movDetails.forEach(movie => {
+//         let movModal = movieModal.content.cloneNode(true);
+
+//         let titleElement = movModal.querySelector('.modal-title');
+//         titleElement.textContent = movie.title;
+
+//         let relDateElement = movModal.querySelector('.movie-modal-release');
+//         relDateElement.textContent = movie.release_date;
+
+//         let tagLineElement = movModal.querySelector('.movie-modal-tagline');
+//         tagLineElement.textContent = movie.tagline;
 
 
         
 
-    });
+//     });
 
-}
+// }
 
 
 
