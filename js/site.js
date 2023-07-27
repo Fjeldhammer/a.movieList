@@ -31,11 +31,88 @@ async function displayMovies() {
         let titleElement = movieCard.querySelector('.card-body > h5');
         titleElement.textContent = movie.title;
 
-        movieListDiv.appendChild(movieCard);
+        let movieParagraphElement = movieCard.querySelector('.card-text');
+        movieParagraphElement.textContent = movie.overview;
 
+        let movieImageElement = movieCard.querySelector('.card img');
+        movieImageElement.setAttribute('src', `https://image.tmdb.org/t/p/w500${movie.poster_path}`);
+
+        let infoButton = movieCard.querySelector('button.btn');
+        infoButton.setAttribute('data-movieId', movie.id);
+
+        movieListDiv.appendChild(movieCard);
     });
     
 }
+
+// function showMovieDetails(btn) {
+
+//     let movieId = btn.getAttribute('data-movieId');
+
+//     let modalParagraph = document.getElementById('movie-modal-paragraph');
+//     modalParagraph.textContent = movieId;
+
+// }
+
+async function getMovie() {
+    try {
+
+        let response = await fetch('https://api.themoviedb.org/3/movie/{movie_id}', {
+            headers: {
+                'Authorization': `Bearer ${API_KEY}`
+            }
+        });
+
+        let data = await response.json();
+        return data;
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function showMovieDetails(btn) {
+
+    let movieId = btn.getAttribute('data-movieId');
+    
+    let modalParagraph = document.getElementById('movie-modal-paragraph');
+    modalParagraph.textContent = movieId;
+
+    const movieModal = document.getElementById('movie-modal');
+
+    let data = await getMovie();
+
+    let movDetails = data.results; // movDetails is an array of objects
+
+    movDetails.forEach(detail => {
+
+
+
+        
+
+    });
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
