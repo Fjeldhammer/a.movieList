@@ -25,7 +25,7 @@ async function displayMovies() {
 
     let movies = data.results; // movies is an array of objects
 
-    movies.forEach(movie => {   
+    movies.forEach(movie => {
         let movieCard = moviePosterTemplate.content.cloneNode(true);
 
         let titleElement = movieCard.querySelector('.card-body > h5');
@@ -42,71 +42,52 @@ async function displayMovies() {
 
         movieListDiv.appendChild(movieCard);
     });
-    
+
 }
 
-function showMovieDetails(btn) {
+async function getMovie(movId) {
+
+    const url = `https://api.themoviedb.org/3/movie/${movId}`;
+
+    try {
+
+        let response = await fetch(url, {
+            headers: {
+                'Authorization': `Bearer ${API_KEY}`
+            }
+        });
+
+        let data = await response.json();
+        return data;
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function showMovieDetails(btn) {
 
     let movieId = btn.getAttribute('data-movieId');
+    let movie = await getMovie(movieId)
 
-    let modalParagraph = document.getElementById('movie-modal-paragraph');
-    modalParagraph.textContent = movieId;
+    document.getElementById('mod-title').textContent = movie.title;
+    document.getElementById('mod-img').src = (`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`);
 
 }
 
-// async function getMovie() {
-//     try {
 
-//         let response = await fetch('https://api.themoviedb.org/3/movie/{movie_id}', {
-//             headers: {
-//                 'Authorization': `Bearer ${API_KEY}`
-//             }
-//         });
 
-//         let data = await response.json();
-//         return data;
 
-//     } catch (error) {
-//         console.error(error);
-//     }
-// }
 
-// async function showMovieDetails(btn) {
 
-//     let movieId = btn.getAttribute('data-movieId');
-    
+//     let relDateElement = document.getElementById('movie-modal-release');
+//     relDateElement.textContent = movie.release_date;
+
+//     let tagLineElement = document.getElementById('movie-modal-tagline');
+//     tagLineElement.textContent = movie.tagline;
+
 //     let modalParagraph = document.getElementById('movie-modal-paragraph');
-//     modalParagraph.textContent = movieId;
-
-//     const movieModal = document.getElementById('movie-modal');
-
-//     let data = await getMovie();
-
-//     let movDetails = data.results; // movDetails is an array of objects
-
-//     movDetails.forEach(movie => {
-//         let movModal = movieModal.content.cloneNode(true);
-
-//         let titleElement = movModal.querySelector('.modal-title');
-//         titleElement.textContent = movie.title;
-
-//         let relDateElement = movModal.querySelector('.movie-modal-release');
-//         relDateElement.textContent = movie.release_date;
-
-//         let tagLineElement = movModal.querySelector('.movie-modal-tagline');
-//         tagLineElement.textContent = movie.tagline;
-
-
-        
-
-//     });
-
-// }
-
-
-
-
-
+//     modalParagraph.textContent = movie.title;
 
 
 
