@@ -72,6 +72,11 @@ async function showMovieDetails(btn) {
 
     document.getElementById('mod-title').textContent = movie.title;
     document.getElementById('mod-img').src = (`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`);
+    document.getElementById('mod-director').textContent = movie.director;
+    document.getElementById('mod-tagline').textContent = movie.tagline;
+    document.getElementById('mod-release').textContent = movie.release_date;
+    document.getElementById('mod-director').textContent = movie.director;
+
 
 }
 
@@ -80,14 +85,14 @@ async function showMovieDetails(btn) {
 
 
 
-//     let relDateElement = document.getElementById('movie-modal-release');
+//     let relDateElement = document.getElementById('mod-release');
 //     relDateElement.textContent = movie.release_date;
 
-//     let tagLineElement = document.getElementById('movie-modal-tagline');
+//     let tagLineElement = document.getElementById('mod-tagline');
 //     tagLineElement.textContent = movie.tagline;
 
-//     let modalParagraph = document.getElementById('movie-modal-paragraph');
-//     modalParagraph.textContent = movie.title;
+//     let modalParagraph = document.getElementById('mod-director');
+//     modalParagraph.textContent = movie.director;
 
 
 
