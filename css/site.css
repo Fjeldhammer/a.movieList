@@ -61,6 +61,10 @@ body {
     color: var(--wf-dark-color);
 }
 
+.navbar-brand {
+    font-family: 'Bebas Neue', sans-serif;
+}
+
 .navbar,
 .footer {
     background-color: var(--wf-theme-900);
@@ -94,3 +98,5 @@ body {
     font-size: 4rem;
     padding-left: .5rem;
 }
+
+/* font-family: 'Bebas Neue', sans-serif; */
