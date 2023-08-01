@@ -50,9 +50,9 @@ footer {
 /* #endregion Sticky Footer */
 
 .btn-primary {
-    --bs-btn-bg: var(--wf-theme-600);
+    --bs-btn-bg: #0CAADE;
     --bs-btn-border-color: var(--wf-theme-600);
-    --bs-btn-hover-bg: var(--wf-theme-700);
+    --bs-btn-hover-bg: #015476;
     --bs-btn-hover-border-color: var(--wf-theme-700);
 }
 
@@ -63,6 +63,12 @@ body {
 
 .navbar-brand {
     font-family: 'Bebas Neue', sans-serif;
+    font-size: xx-large;
+}
+
+.navbar-brand:hover {
+    color: #0CAADE;
+    transition: color 0.2s;
 }
 
 .navbar,
@@ -89,8 +95,12 @@ body {
     max-width: 400px;
 }
 
+.linkText {
+    color: #0CAADE;
+}
+
 .checklist i {
-    color: var(--wf-theme-core);
+    color: #4587AE;
     padding-right: .5rem;
 }
 
@@ -99,4 +109,4 @@ body {
     padding-left: .5rem;
 }
 
-/* font-family: 'Bebas Neue', sans-serif; */
+
